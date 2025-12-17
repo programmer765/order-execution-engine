@@ -1,24 +1,5 @@
-import fastify from "fastify";
-import env from "@fastify/env";
+import "dotenv/config";
 
-const schema = {
-  type: "object",
-  required: ["PORT"],
-  properties: {
-    PORT: { type: "number", default: 3000 },
-  },
+export const ENV = {
+  PORT: process.env.PORT ? parseInt(process.env.PORT) : 3000,
 }
-
-const options = {
-
-  schema: schema,
-  dotenv: true,
-}
-
-fastify().register(env, options).ready((err) => {
-  if (err) {
-    console.error(err);
-    process.exit(1);
-  }
-  console.log("Environment variables loaded:", fastify());
-})

@@ -14,9 +14,9 @@
   "license": "ISC",
   "packageManager": "pnpm@10.6.4",
   "dependencies": {
-    "@fastify/env": "^5.0.3",
     "@fastify/websocket": "^11.2.0",
     "@raydium-io/raydium-sdk-v2": "0.2.31-alpha",
+    "dotenv": "^17.2.3",
     "fastify": "^5.6.2"
   },
   "devDependencies": {
