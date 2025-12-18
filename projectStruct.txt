@@ -1,0 +1,58 @@
+order-execution-engine/
+│
+├── src/
+│   ├── app.ts
+│   ├── server.ts
+│   │
+│   ├── config/
+│   │   ├── env.ts
+│   │   ├── redis.ts
+│   │   └── postgres.ts
+│   │
+│   ├── modules/
+│   │   └── orders/
+│   │       ├── order.routes.ts
+│   │       ├── order.controller.ts
+│   │       ├── order.service.ts
+│   │       ├── order.queue.ts
+│   │       ├── order.worker.ts
+│   │       ├── order.websocket.ts
+│   │       ├── order.types.ts
+│   │       └── order.repository.ts
+│   │
+│   ├── dex/
+│   │   ├── dex.router.ts
+│   │   ├── raydium.mock.ts
+│   │   ├── meteora.mock.ts
+│   │   └── dex.types.ts
+│   │
+│   ├── websocket/
+│   │   └── socket.registry.ts
+│   │
+│   ├── queue/
+│   │   └── bullmq.ts
+│   │
+│   ├── utils/
+│   │   ├── logger.ts
+│   │   ├── sleep.ts
+│   │   └── retry.ts
+│   │
+│   ├── tests/
+│   │   ├── orders.test.ts
+│   │   ├── routing.test.ts
+│   │   └── websocket.test.ts
+│   │
+│   └── types/
+│       └── global.d.ts
+│
+├── prisma/ (or migrations/)
+│   └── schema.prisma
+│
+├── postman/
+│   └── order-execution.postman_collection.json
+│
+├── docker-compose.yml
+├── README.md
+├── tsconfig.json
+├── package.json
+└── .env

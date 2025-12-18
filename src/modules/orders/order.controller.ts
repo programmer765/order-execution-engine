@@ -10,7 +10,24 @@ export async function createOrder(
   req: FastifyRequest<{ Body: CreateOrderRequest}>,
   reply: FastifyReply,
 ) {
+  const body = req.body;
+  if(!body || typeof body !== 'object') {
+    return reply.status(400).send({
+      error: "Missing request body",
+    });
+  }
+
   const { tokenIn, tokenOut, amount } = req.body
+  const missing: string[] = [];
+  if (!tokenIn) missing.push("tokenIn");
+  if (!tokenOut) missing.push("tokenOut");
+  if (amount === undefined || amount === null) missing.push("amount");
+
+  if (missing.length) {
+    return reply.status(400).send({
+      error: `Missing required field(s): ${missing.join(", ")}`,
+    });
+  }
 
   const order = await createOrderService({ tokenIn, tokenOut, amount })
 
@@ -23,25 +40,33 @@ export async function createOrder(
 
 // WebSocket handler to manage order status updates
 export async function orderWebSocketHandler(
-  connection: any,
+  connection: WebSocket,
   req: FastifyRequest<{ Querystring: { orderId: string } }>,
 ) {
-  const orderId = req.query.orderId;
+  
+  const { orderId } = req.query;
 
   if (!orderId) {
-    connection.socket.close();
+    connection.close();
     return;
   }
 
-  registerSocket(orderId, connection);
+  const WSConnection = {
+    socket: {
+      send: (data: string) => connection.send(data),
+      close: () => connection.close(),
+    }
+  }
+
+  registerSocket(orderId, WSConnection);
 
   // send initial status
-  connection.socket.send(JSON.stringify({ orderId, status: OrderStatus.PENDING }));
+  connection.send(JSON.stringify({ orderId, status: OrderStatus.PENDING }));
 
   // cleanup on close
-  connection.socket.on("close", () => {
+  connection.onclose = () => {
     // Remove socket from registry
     removeSocket(orderId);
-  })
+  }
 
 }
