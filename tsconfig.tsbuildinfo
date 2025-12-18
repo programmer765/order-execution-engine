@@ -1,1 +1,1 @@
-{"root":["./src/app.ts","./src/server.ts","./src/config/env.ts","./src/modules/orders/order.controller.ts","./src/modules/orders/order.routes.ts","./src/modules/orders/order.service.ts","./src/modules/orders/order.types.ts"],"version":"5.9.3"}
+{"root":["./src/app.ts","./src/server.ts","./src/config/env.ts","./src/modules/orders/order.controller.ts","./src/modules/orders/order.routes.ts","./src/modules/orders/order.service.ts","./src/modules/orders/order.types.ts","./src/websocket/socket.registry.ts"],"version":"5.9.3"}

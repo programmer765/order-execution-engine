@@ -1,5 +1,5 @@
 import crypto from "crypto";
-import { CreateOrderRequest, Order } from "./order.types";
+import { CreateOrderRequest, Order, OrderStatus } from "./order.types";
 
 
 export async function createOrderService(orderReq : CreateOrderRequest) : Promise<Order> {
@@ -9,7 +9,7 @@ export async function createOrderService(orderReq : CreateOrderRequest) : Promis
     tokenIn: orderReq.tokenIn,
     tokenOut: orderReq.tokenOut,
     amount: orderReq.amount,
-    status: "pending",
+    status: OrderStatus.PENDING,
     createdAt: new Date(),
     updatedAt: new Date(),
   };
