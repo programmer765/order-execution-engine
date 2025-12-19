@@ -3,6 +3,7 @@ import { createOrderService } from "./order.service";
 import { CreateOrderRequest } from "./order.types";
 import { registerSocket, removeSocket } from "../../websocket/socket.registry";
 import { OrderStatus } from "./order.types";
+import { enqueueOrderJob } from "../../queue/order.queue";
 
 
 // HTTP handler to create a new order
@@ -30,6 +31,7 @@ export async function createOrder(
   }
 
   const order = await createOrderService({ tokenIn, tokenOut, amount })
+  await enqueueOrderJob({ orderId: order.id, tokenIn, tokenOut, amount });
 
   return reply.send({
     id: order.id,

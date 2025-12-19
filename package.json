@@ -12,12 +12,14 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "packageManager": "pnpm@10.6.4",
+  "packageManager": "pnpm@10.26.1",
   "dependencies": {
     "@fastify/websocket": "^11.2.0",
     "@raydium-io/raydium-sdk-v2": "0.2.31-alpha",
+    "bullmq": "^5.66.1",
     "dotenv": "^17.2.3",
-    "fastify": "^5.6.2"
+    "fastify": "^5.6.2",
+    "ioredis": "^5.8.2"
   },
   "devDependencies": {
     "fastify-tsconfig": "^3.0.0",

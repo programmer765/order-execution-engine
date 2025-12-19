@@ -19,7 +19,8 @@ export function removeSocket(orderId: string) {
   socketRegistry.delete(orderId);
 }
 
-export function sendStatusUpdate(orderId: string, status: OrderStatusUpdate) {
+export function sendStatusUpdate(status: OrderStatusUpdate) {
+  const orderId = status.orderId;
   const connection = socketRegistry.get(orderId);
   if(!connection || connection.size === 0) return
   
