@@ -9,6 +9,7 @@ export async function createOrderService(orderReq : CreateOrderRequest) : Promis
     tokenIn: orderReq.tokenIn,
     tokenOut: orderReq.tokenOut,
     amount: orderReq.amount,
+    walletAddress: orderReq.walletAddress,
     status: OrderStatus.PENDING,
     createdAt: new Date(),
     updatedAt: new Date(),

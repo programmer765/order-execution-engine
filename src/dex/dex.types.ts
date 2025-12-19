@@ -6,12 +6,14 @@ export interface DexQuote {
   estimatedOutput: number;
   estimatedFees: number;
   timestamp: string;
+  walletAddress: string;
 }
 
 export interface SwapParams {
   tokenIn: string;
   tokenOut: string;
   amountIn: number;
+  walletAddress: string;
 }
 
 export interface DexSwapResult {
@@ -20,4 +22,5 @@ export interface DexSwapResult {
   amountOut: number;
   venue: ExecutionVenue;
   timestamp: string;
+  walletAddress: string;
 }

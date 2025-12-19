@@ -18,11 +18,12 @@ export async function createOrder(
     });
   }
 
-  const { tokenIn, tokenOut, amount } = req.body
+  const { tokenIn, tokenOut, amount, walletAddress } = req.body
   const missing: string[] = [];
   if (!tokenIn) missing.push("tokenIn");
   if (!tokenOut) missing.push("tokenOut");
   if (amount === undefined || amount === null) missing.push("amount");
+  if (!walletAddress) missing.push("walletAddress");
 
   if (missing.length) {
     return reply.status(400).send({
@@ -30,8 +31,8 @@ export async function createOrder(
     });
   }
 
-  const order = await createOrderService({ tokenIn, tokenOut, amount })
-  await enqueueOrderJob({ orderId: order.id, tokenIn, tokenOut, amount });
+  const order = await createOrderService({ tokenIn, tokenOut, amount, walletAddress })
+  await enqueueOrderJob({ orderId: order.id, tokenIn, tokenOut, amount, walletAddress });
 
   return reply.send({
     id: order.id,
