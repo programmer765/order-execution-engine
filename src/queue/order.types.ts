@@ -3,5 +3,4 @@ export type OrderJobData = {
   tokenIn: string;
   tokenOut: string;
   amount: number;
-  walletAddress: string;
 };

@@ -14,7 +14,7 @@ async function simulatePhase(delayMs: number) : Promise<void> {
 const connection = new IORedis(ENV.REDIS_URL);
 
 export const orderWorker = new Worker<OrderJobData>('order-execution', async (job: Job<OrderJobData>) => {
-  const { orderId, tokenIn, tokenOut, amount, walletAddress } = job.data;
+  const { orderId, tokenIn, tokenOut, amount } = job.data;
   try {
     console.log(`[Worker] Processing order ${orderId}`)
     console.log(`[Worker] ${orderId} - Starting ROUTING phase`)

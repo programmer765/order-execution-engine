@@ -25,7 +25,6 @@ export interface CreateOrderRequest {
   tokenIn: string;
   tokenOut: string;
   amount: number;
-  walletAddress: string;
 }
 
 export interface Order {
@@ -33,7 +32,6 @@ export interface Order {
   tokenIn: string;
   tokenOut: string;
   amount: number;
-  walletAddress: string;
   status: OrderStatusTypes;
   createdAt: Date;
   updatedAt: Date;
