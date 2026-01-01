@@ -6,4 +6,6 @@ export const ENV = {
   REDIS_URL: process.env.REDIS_URL || "redis://127.0.0.1:6379",
   SOLANA_RPC_URL: process.env.SOLANA_RPC_URL || "https://api.devnet.solana.com",
   SLIPPAGE_TOLERANCE: process.env.SLIPPAGE_TOLERANCE ? parseFloat(process.env.SLIPPAGE_TOLERANCE) : 1.0,
+  PRIVATE_KEY: process.env.SERVER_PRIVATE_KEY || "",
+  METEORA_API_URL: process.env.METEORA_API_URL || "https://dammv2-api.devnet.meteora.ag/pools",
 }

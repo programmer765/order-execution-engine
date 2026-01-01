@@ -128,7 +128,7 @@ export async function executeRaydiumSwap(params: SwapParams, quotedPrice: number
 
     // send and confirm transaction
     const txHash = await connection.sendTransaction(transaction, { skipPreflight: false, preflightCommitment: "confirmed" });
-    const latestBlockhash = await connection.getLatestBlockhash();
+    const latestBlockhash = await connection.getLatestBlockhash("confirmed");
 
     await connection.confirmTransaction({
       signature: txHash,
