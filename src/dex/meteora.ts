@@ -30,7 +30,7 @@ async function getPool(inputMint: string, outputMint: string) {
 }
 
 
-async function getMeteraQuote(params: SwapParams) : Promise<DexQuote> {
+export async function getMeteraQuote(params: SwapParams) : Promise<DexQuote> {
   console.log(`Meteora getting quote for ${params.amountIn} ${params.tokenIn} -> ${params.tokenOut}`)
 
   try {
@@ -66,7 +66,7 @@ async function getMeteraQuote(params: SwapParams) : Promise<DexQuote> {
 } 
 
 
-async function executeMeteoraSwap(params: SwapParams) : Promise<DexSwapResult> {
+export async function executeMeteoraSwap(params: SwapParams) : Promise<DexSwapResult> {
   console.log(`Meteora executing swap for ${params.amountIn} ${params.tokenIn} -> ${params.tokenOut}`)
 
   try {
